@@ -20,6 +20,13 @@
 </div>
 <button on:click={() => console.log($map)}>Log map</button>
 
+{#if $map
+  .flat()
+  .filter((cell) => cell.field === "empty")
+  .every((cell) => cell.revealed)}
+  <button on:click={() => ($map = makeMap(4))}>Reset</button>
+{/if}
+
 <style>
   .cells {
     display: grid;
